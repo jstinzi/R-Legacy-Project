@@ -1,0 +1,22 @@
+---
+title: "RMarkdown Test"
+author: "Joseph R. Stinziano"
+date: "05/02/2020"
+output: html_document
+---
+Glossary
+a - x values
+b - y values squared
+adslkhasdkfje
+dsfklsdjl;
+```{r}
+1 + 2
+a <- 1:10
+b <- 2:11
+plot(a ~ b)
+```
+
+```{r}
+?source
+#make a comment
+```
