@@ -1,0 +1,14 @@
+#Issues and Challenges in R
+As issues arise throughout the workshop, please write about the issue or challenge.
+Provide a description with example code, and if you solved it, what you did to solve
+it.
+
+Example Issue: 
+Issue: {unite} function from {tidyr} stopped working in a script.
+
+Code: data <- unite(data, col = "ID", from = c("Treatment", "Plant"), sep = "_")
+
+Solution: In {tidyr}'s latest update, the 'from' argument name was removed. To fix,
+simply remove 'from =' from the code.
+
+data <- unite(data, col = "ID", c("Treatment", "Plant"), sep = "_")
