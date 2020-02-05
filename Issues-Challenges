@@ -17,3 +17,5 @@ Mac Quirks:
 Issue: Rmarkdown not working due to problems with Xcode download in OSX Catalina
 
 Solution: Open Terminal and run: xcode-select --install
+
+
