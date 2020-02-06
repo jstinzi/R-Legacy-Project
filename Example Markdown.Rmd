@@ -10,12 +10,12 @@ b - y values squared
 adslkhasdkfje
 dsfklsdjl;j
 ```{r}
-1 + 2
+1 + 2#hgkgjg
 a <- 1:10
 b <- 2:11
 plot(a ~ b)
 ```
-
+kjhjlgui
 ```{r}
 ?source
 #make a comment
