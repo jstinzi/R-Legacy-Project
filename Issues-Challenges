@@ -19,3 +19,8 @@ Issue: Rmarkdown not working due to problems with Xcode download in OSX Catalina
 Solution: Open Terminal and run: xcode-select --install
 
 
+Organizing project structure
+Issue: Projects without a standardized structure reduce efficiency
+
+Solution: https://medium.com/outlier-bio-blog/a-quick-guide-to-organizing-data-science-projects-updated-for-2016-4cbb1e6dac71
+
