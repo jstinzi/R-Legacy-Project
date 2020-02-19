@@ -7,12 +7,12 @@ incoporated new techniques in R into their coding repertoire.
 This project is currently being piloted at the University of New Mexico, with 1.5 hr lessons run on a
 bi-weekly basis, with a small group (4 attendees + 1 instructor).
 
-## Week 1
+## Lesson 1
 1. Principles of clean & transparent coding
 2. R projects, version control through git, GitHub, and GitHub Desktop
 3. Using R markdown for troubleshooting code
 
-## Week 2
+## Lesson 2
 1. Using nested working directories
 2. Using conditionals
 3. Using for loops
