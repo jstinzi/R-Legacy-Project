@@ -20,3 +20,7 @@ in another repository (https://github.com/jstinzi/R-UNM-Biology-Workshop).
 3. Using for loops
 4. Building functions that work
 
+## Lesson 3
+1. Building functions that work (cont'd)
+2. Building function output structures
+3. Meta-programming part 1
