@@ -1,0 +1,63 @@
+---
+title: "Random Dataset Generation"
+author: "Joseph R. Stinziano"
+date: "19/02/2020"
+output: html_document
+---
+
+Here we will use the built-in functions from R to generate a random
+dataset according to the needs of a specific type of analysis. To
+find what kinds of distributions are available, type ?Distributions
+into the command line. In general, to randomly sample from a
+distribution, you need to type r with the distribution name. For
+example, rnorm and rbeta simulate normal and beta distributions.
+
+When randomly sampling for a dataset to test analyses, it may be
+necessary to specify a given distribution so that you can get random
+data similar to that which you will collect. The power of random
+datasets is that you can build your analysis in advance of data
+collection (or build it while a machine is collecting data), saving
+time later!
+
+```{r}
+#Set seed to make the randomness repeatable
+set.seed(9)
+#Let's create a series of vectors simulating differences in two
+#populations by randomly sampling a normal distribution, with
+#corresponding vectors sampled from a uniform distribution that will
+#represent the dependent variables in a multiple regression analysis.
+
+#Create vector for treatments
+treatments <- c(rep("A", 100), rep("B", 100))
+
+#Create randomly sampled normal vector of height
+height <- c(rnorm(n = 100, mean = 180, sd = 20), 
+            rnorm(n = 100, mean = 150, sd = 15))
+
+#Create randomly sampled vectors for some hypothetical predictors
+white_claw_consumption <- c(rchisq(n = 100, df = 10, ncp = 20),
+                            rchisq(n = 100, df = 5, ncp = 5))
+hist(white_claw_consumption)
+pizza_consumption <- runif(n = 200, min = 0, max = 3)
+kickball_play_time <- runif(n = 200, min = 0, max = 20)
+
+#Collate to dataframe
+data <- data.frame(treatments, height, white_claw_consumption,
+                   pizza_consumption, kickball_play_time)
+plot(height ~ white_claw_consumption, data)
+
+model <- lm(height ~ treatments + white_claw_consumption + 
+             pizza_consumption + kickball_play_time, data)
+plot(model)
+summary(model)
+t.test(height ~ treatments, data)
+
+library(nlme)
+model_2 <- lme(height ~ white_claw_consumption,
+             random = ~1|treatments, data)
+summary(model_2)
+
+#Based on the plot, we would expect a significant regression
+#between white claw consumption and height, but when we
+#account for the treatments, there are no differences!
+```
