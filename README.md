@@ -26,5 +26,5 @@ in another repository (https://github.com/jstinzi/R-UNM-Biology-Workshop).
 2. Building function output structures
 3. Testing functions
 
-##Lesson 4
+## Lesson 4
 1. Bootstrapping, jackknifing, and Monte Carlo simulations
