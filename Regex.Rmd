@@ -1,0 +1,69 @@
+---
+title: "Regex"
+author: "Joseph R. Stinziano"
+date: "06/05/2020"
+output: html_document
+---
+Regular expressions are needed for pattern matching
+
+There are different characters used for pattern matching:
+Anchors
+^ searchs for pattern at start of string
+$ searchs for pattern at end of string
+
+
+. allows for any number of any character
+\d searches for a digit - to add to pattern string
+
+In this example, we only want data from genotypes containing
+a knockout of the claw gene
+```{r}
+#Create dataframe
+speed <- rnorm(n = 100, mean = 10, sd = 3)
+genotype <- c(rep("WT", 10),
+              rep("white", 10),
+              rep("claw", 10),
+              rep("thunder", 10),
+              rep("struck", 10),
+              rep("white claw", 10),
+              rep("thunder claw", 10),
+              rep("thunder struck", 10),
+              rep("claw struck", 10),
+              rep("white claw thunder", 10))
+data <- data.frame(cbind(genotype, speed))
+data$speed <- as.numeric(data$speed)
+data$speed <- round(data$speed, digits = 2)
+
+#let's try to get just the data with a claw variant of the genotype
+claw_data <- data[data$genotype %in% grep(pattern = "claw",
+                                        data$genotype,
+                                        value = TRUE), ]
+
+#now let's try to get just genotypes where claw is at the end
+claw_data_2 <- data[data$genotype %in% grep(pattern = "claw$",
+                                        data$genotype,
+                                        value = TRUE), ]
+
+#now let's try to get just genotypes where claw is at the beginning
+claw_data_3 <- data[data$genotype %in% grep(pattern = "^claw",
+                                        data$genotype,
+                                        value = TRUE), ]
+
+#now let's try to get just genotypes where claw is in the middle
+
+#save this example
+claw_data_4 <- data[data$genotype %in% grep(pattern = "white.{+}thunder",
+                                        data$genotype,
+                                        value = TRUE), ]
+
+#now let's try to get speed values that are double-digits, with a
+#5 in the first decimal place
+claw_data_5 <- data[data$speed %in% grep(pattern = "^\\d\\d.5",
+                                        data$speed,
+                                        value = TRUE), ]
+#now let's get single-digit speed values
+claw_data_6 <- data[data$speed %in% grep(pattern = "^\\d\\.",
+                                        data$speed,
+                                        value = TRUE), ]
+#note that for some punctuation, you need to use a \\ beforehand
+```
